@@ -12,6 +12,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import Setting from '../screens/Settings';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -21,7 +22,9 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
+      
       initialRouteName="TabOne"
+      // screenOptions={{hea}}
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="TabOne"
@@ -53,12 +56,18 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator>
+    <TabOneStack.Navigator headerMode="none">
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
         options={{ headerTitle: 'Tab One Title' }}
       />
+      <TabOneStack.Screen
+        name="Settings"
+        component={Setting}
+      >
+
+      </TabOneStack.Screen>
     </TabOneStack.Navigator>
   );
 }
