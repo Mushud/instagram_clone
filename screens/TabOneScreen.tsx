@@ -1,12 +1,15 @@
-import { StackScreenProps } from '@react-navigation/stack';
-import * as React from 'react';
-import { StyleSheet, Button, Image } from 'react-native';
-import {AntDesign, Feather} from '@expo/vector-icons'
+import { StackScreenProps } from "@react-navigation/stack";
+import * as React from "react";
+import { StyleSheet, Button, Image, TouchableOpacity } from "react-native";
+import { AntDesign, Feather } from "@expo/vector-icons";
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import EditScreenInfo from "../components/EditScreenInfo";
+import { Text, View } from "../components/Themed";
 
-export default function TabOneScreen({navigation}: StackScreenProps<any>) {
+export default function TabOneScreen({
+  navigation,
+  route,
+}: StackScreenProps<any>) {
   return (
     <View style={styles.container}>
       <View
@@ -18,7 +21,7 @@ export default function TabOneScreen({navigation}: StackScreenProps<any>) {
         }}
       >
         <Text style={{ fontSize: 25, fontFamily: "styled-font" }}>
-          Intagram
+          Instagram
         </Text>
         <View style={{ flexDirection: "row", backgroundColor: "transparent" }}>
           <AntDesign
@@ -27,7 +30,16 @@ export default function TabOneScreen({navigation}: StackScreenProps<any>) {
             size={18}
             color="red"
           />
-          <AntDesign name="message1" size={18} color="red" />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Settings", {
+                name: "From Home screen",
+                title: "Here we go",
+              });
+            }}
+          >
+            <AntDesign name="setting" size={25} color="red" />
+          </TouchableOpacity>
         </View>
       </View>
       <View
@@ -179,10 +191,10 @@ export default function TabOneScreen({navigation}: StackScreenProps<any>) {
               16,323 others
             </Text>
             <Text>
-               <Text style={{ fontWeight: "bold" }}>dennis </Text>and
-              Fine wine but not yours to sip
+              <Text style={{ fontWeight: "bold" }}>dennis </Text>and Fine wine
+              but not yours to sip
             </Text>
-            <Text style={{color: "grey"}}>View all 501 comments</Text>
+            <Text style={{ color: "grey" }}>View all 501 comments</Text>
           </View>
         </View>
       </View>
@@ -193,16 +205,15 @@ export default function TabOneScreen({navigation}: StackScreenProps<any>) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30
-   
+    paddingTop: 30,
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
 });
