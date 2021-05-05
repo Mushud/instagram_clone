@@ -14,6 +14,7 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import Setting from '../screens/Settings';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import Settings from '../screens/Settings';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -22,24 +23,29 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      
       initialRouteName="TabOne"
       // screenOptions={{hea}}
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+    >
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-home" color={color} />
+          ),
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Details"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-albums" color={color} />
+          ),
         }}
       />
+     
     </BottomTab.Navigator>
   );
 }
@@ -62,12 +68,7 @@ function TabOneNavigator() {
         component={TabOneScreen}
         options={{ headerTitle: 'Tab One Title' }}
       />
-      <TabOneStack.Screen
-        name="Settings"
-        component={Setting}
-      >
-
-      </TabOneStack.Screen>
+      
     </TabOneStack.Navigator>
   );
 }
